@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ui_component/core/const.dart';
 import 'package:ui_component/core/my_flutter_app_icons.dart';
 import 'package:ui_component/model/shoe_model.dart';
+import 'package:ui_component/widget/app_clipper.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -43,8 +44,35 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-          Container(height: 300,color: AppColors.blueColor,),
-          SizedBox(height: 20,),
+          Container(
+              height: 350,
+              child: ListView.builder(
+                  itemCount: shoeList.length,
+                  scrollDirection: Axis.horizontal,
+                  physics: BouncingScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return ClipPath(
+                        clipper:
+                            AppClipper(diagonalHeight: 150, cornerSize: 25),
+                        child: Container(
+                          height: 300,
+                          color: shoeList[index].color,
+                          child: Column(
+                            children: [
+                              Icon(MyFlutterApp.check),
+                              Row(children: [
+                                Text("data"),
+                                Text("data"),
+                                Text("data"),
+                                Text("data"),Text("data"),Text("data")
+                              ],)
+                            ],
+                          ),
+                        ));
+                  })),
+          SizedBox(
+            height: 20,
+          ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Row(
@@ -57,10 +85,11 @@ class _HomeState extends State<Home> {
                       style: TextStyle(color: AppColors.greenColor)),
                 ]),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           ...shoeList.map((data) => Container(
-                margin:
-                    EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -117,8 +146,10 @@ class _HomeState extends State<Home> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-                color: Colors.white,
-            boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10,spreadRadius: 1)]),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(color: Colors.black12, blurRadius: 10, spreadRadius: 1)
+            ]),
         child: BottomNavigationBar(
           currentIndex: 0,
           selectedItemColor: AppColors.greenColor,
