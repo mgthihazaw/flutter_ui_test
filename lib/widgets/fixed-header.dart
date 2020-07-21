@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CurrySliverHeader extends StatelessWidget {
+class FixedHeader extends StatelessWidget {
   final Color backgroundColor;
   final String headerTitle;
 
-  CurrySliverHeader(this.backgroundColor, this.headerTitle);
+  FixedHeader(this.backgroundColor, this.headerTitle);
 
   @override
   Widget build(BuildContext context) {

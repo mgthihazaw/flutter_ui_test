@@ -33,12 +33,9 @@ class CustomSilverNavbar extends StatelessWidget {
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQi00iZ-bGVkTSEI10XYTrk1K6P_p2kBHRnDA&usqp=CAU",
                 fit: BoxFit.cover,
               ),
-             
             ),
           ),
-          CurrySliverHeader(Colors.red,"Hello World"),
-
-          // Next, create a SliverList
+          FixedHeader(Colors.red, "Hello World"),
 
           SliverToBoxAdapter(
             child: Container(
@@ -48,7 +45,7 @@ class CustomSilverNavbar extends StatelessWidget {
                 itemCount: 10,
                 itemBuilder: (context, index) {
                   return Container(
-                    width: 100.0, 
+                    width: 100.0,
                     child: Card(
                       child: Center(child: Text('data')),
                     ),
@@ -57,20 +54,18 @@ class CustomSilverNavbar extends StatelessWidget {
               ),
             ),
           ),
-          //   SliverFixedExtentList(
-
-          //     itemExtent: 100.0,
-          //     delegate: new SliverChildBuilderDelegate(
-                
-          //         (BuildContext context, int index) {
-          //             return new Container(
-          //                 alignment: Alignment.center,
-          //                 color: Colors.lightBlue[100 * (index % 9)],
-          //                 child: new Text('list item $index'),
-          //             );
-          //         },
-          //     ),
-          // ),
+          SliverFixedExtentList(
+            itemExtent: 100.0,
+            delegate: new SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return new Container(
+                  alignment: Alignment.center,
+                  color: Colors.lightBlue[100 * (index % 9)],
+                  child: new Text('list item $index'),
+                );
+              },
+            ),
+          ),
           SliverToBoxAdapter(
             child: Container(
               height: 100.0,
